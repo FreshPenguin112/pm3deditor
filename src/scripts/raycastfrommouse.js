@@ -1,7 +1,7 @@
-(async () => {
+(() => {
     var ext = vm.runtime.ext_jg3d;
-    var mouse = vm.runtime.ioDevices.mouse;
-    var [renderer, Three, camera, scene] = [
+    var [mouse, renderer, Three, camera, scene] = [
+        vm.runtime.ioDevices.mouse,
         ext.renderer,
         ext.three,
         ext.camera,
