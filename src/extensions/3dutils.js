@@ -100,6 +100,7 @@
                 },
             };
         }
+
         changetexture(args, util) {
             var textureLoader = new three.TextureLoader();
             var texture = textureLoader.load(String(args.url));
@@ -166,13 +167,20 @@
                         o.geometry.dispose();
                         if (this.savedMeshes[url])
                             object = this.savedMeshes[url];
-                        o.geometry = object.geometry.clone();
+                        object.traverse((child) => {
+                            if (child instanceof three.Mesh) {
+                                o.geometry = child.geometry.clone();
+                            }
+                        });
                         if (!this.savedMeshes[url])
                             this.savedMeshes[url] = object;
                         resolve();
                     },
                     () => {},
-                    () => {}
+                    (_error) => {
+                        console.error(_error);
+                        resolve();
+                    }
                 );
             });
         }
