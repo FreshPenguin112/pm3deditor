@@ -1,0 +1,19 @@
+on: [push, workflow_dispatch]
+jobs:
+    minify:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v2
+            - name: minify
+              uses: nizarmah/auto-minify@v2.1
+              with:
+                    overwrite: true
+                    directory: 'scripts'
+                    output: 'dist'
+            - name: commit
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                    repository: ${{ github.repository }}
+                    commit_message: "Github Action: Auto Minified Scripts"
+                    branch: ${{ github.ref }}
