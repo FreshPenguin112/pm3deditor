@@ -42,7 +42,7 @@
             {
               opcode: "mat",
               blockType: Scratch.BlockType.COMMAND,
-              text: "change object [object]'s material from url [url1]",
+              text: "change object [object]'s material from url [url]",
               arguments: {
                 object: {
                   type: Scratch.ArgumentType.STRING,
