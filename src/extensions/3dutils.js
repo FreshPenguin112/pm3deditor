@@ -44,11 +44,11 @@
               blockType: Scratch.BlockType.COMMAND,
               text: "change object [object1]'s material from url [url1]",
               arguments: {
-                object1: {
+                object: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: "Cube1"
                 },
-                url1: {
+                url: {
                   type: Scratch.ArgumentType.STRING,
                   defaultValue: "https://i.ibb.co/RBQh6zW/normals.jpg"
                 }
@@ -59,9 +59,9 @@
       }
       texture(args, util) {
         var textureLoader = new three.TextureLoader();
-        var texture = textureLoader.load(args.url.toString());
+        var texture = textureLoader.load(String(args.url));
   
-        var object = scene.getObjectByName(args.object.toString());
+        var object = scene.getObjectByName(String(args.object));
         if (object) {
           object.traverse(function(child) {
             if (child instanceof three.Mesh) {
@@ -74,9 +74,9 @@
       }
       mat(args, util) {
         var textureLoader = new three.TextureLoader();
-        var matcapTexture = textureLoader.load(args.url1.toString());
+        var matcapTexture = textureLoader.load(String(args.url));
   
-        var objectt = scene.getObjectByName(args.object1.toString());
+        var objectt = scene.getObjectByName(String(args.object));
         if (objectt) {
           objectt.traverse(function(child) {
             if (child instanceof three.Mesh) {
