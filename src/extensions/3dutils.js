@@ -132,7 +132,7 @@
             const url = String(args.url);
             // switch loaders based on file type
             let fileType = "obj";
-            switch (Cast.toString(args.filetype)) {
+            switch (String(args.filetype)) {
                 case ".glb / .gltf":
                     fileType = "glb";
                     break;
