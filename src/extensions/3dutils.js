@@ -35,7 +35,7 @@
                 },
                 url: {
                   type: Scratch.ArgumentType.STRING,
-                  defaultValue: "https:\/\/api.allorigins.win\/raw?url=https:\/\/s11.gifyu.com\/images\/SuuWZ.gif"
+                  defaultValue: "https://i.ibb.co/D8P9PpG/giphy.webp"
                 }
               }
             },
@@ -50,7 +50,7 @@
                 },
                 url1: {
                   type: Scratch.ArgumentType.STRING,
-                  defaultValue: "https:\/\/api.allorigins.win\/raw?url=https:\/\/mua.github.io\/models\/matcap\/normals.jpg"
+                  defaultValue: "https://i.ibb.co/RBQh6zW/normals.jpg"
                 }
               }
             }
