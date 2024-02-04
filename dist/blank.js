@@ -1,0 +1,1 @@
+(async()=>{var a=vm.runtime.ext_jg3d,[b,c,d,e]=[a.renderer,a.three,a.camera,a.scene]})();
