@@ -163,7 +163,7 @@
                         //console.log(object);
                         var _o = scene.getObjectByName(String(args.object));
                         _o.geometry.dispose();
-                        _o.material.dispose();
+                        //_o.material.dispose();
                         var o = _o.clone();
                         _o.clear();
                         scene.remove(_o);
