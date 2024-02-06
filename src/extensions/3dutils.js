@@ -1,4 +1,4 @@
-/*jshint esversion:8*/
+/*please click accept, this extension is required for the editor's full functionality*/
 (function (Scratch) {
     "use strict";
     if (!Scratch.extensions.unsandboxed) {
@@ -75,6 +75,22 @@
                             filetype: {
                                 type: Scratch.ArgumentType.STRING,
                                 menu: "filetypes",
+                            },
+                        },
+                    },
+                    {
+                        opcode: "changeopacity",
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: "change object [object]'s opacity to [opacity] %",
+                        arguments: {
+                            object: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: "Cube1",
+                            },
+                            opacity: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                acceptReporters: true,
+                                defaultValue: "50",
                             },
                         },
                     },
@@ -183,6 +199,31 @@
                     }
                 );
             });
+        }
+        changeopacity(args, util) {
+            const opacity = Number(args.opacity);
+            var _object = vm.runtime.ext_jg3d.scene.getObjectByName(
+                String(args.object)
+            );
+            if (_object) {
+                var object = _object.clone();
+                vm.runtime.ext_jg3d.scene.remove(_object);
+                //var material = object.material;
+                if (!0) {
+                    object.material.transparent = true;
+                    object.material.opacity = opacity / 100;
+                    object.material.format = 1023
+                    object.material.alphaTest = 0.5
+                } else {
+                    object.material.transparent = false;
+                    object.material.opacity = 1;
+                }
+                //console.log(object);
+                object.traverse(child => {
+                    child.material = object.material
+                })
+                vm.runtime.ext_jg3d.scene.add(object);
+            } else return;
         }
     }
     Scratch.extensions.register(new utils3d());
