@@ -94,6 +94,17 @@
                             },
                         },
                     },
+                    {
+                        opcode: "getopacity",
+                        blockType: Scratch.BlockType.REPORTER,
+                        text: "get object [object]'s opacity as a percent",
+                        arguments: {
+                            object: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: "Cube1",
+                            },
+                        },
+                    },
                 ],
                 menus: {
                     filetypes: {
@@ -212,18 +223,25 @@
                 if (!0) {
                     object.material.transparent = true;
                     object.material.opacity = opacity / 100;
-                    object.material.format = 1023
-                    object.material.alphaTest = 0.5
+                    object.material.format = 1023;
+                    object.material.alphaTest = opacity / 100;
                 } else {
                     object.material.transparent = false;
                     object.material.opacity = 1;
                 }
                 //console.log(object);
-                object.traverse(child => {
-                    child.material = object.material
-                })
+                object.traverse((child) => {
+                    child.material = object.material;
+                });
                 vm.runtime.ext_jg3d.scene.add(object);
             } else return;
+        }
+        getopacity(args, util) {
+            var object = vm.runtime.ext_jg3d.scene.getObjectByName(
+                String(args.object)
+            );
+            if (object) return object.material.opacity * 100;
+            else return undefined;
         }
     }
     Scratch.extensions.register(new utils3d());
