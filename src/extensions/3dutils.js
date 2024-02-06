@@ -213,14 +213,14 @@
         }
         changeopacity(args, util) {
             const opacity = Number(args.opacity);
-            var _object = vm.runtime.ext_jg3d.scene.getObjectByName(
+            var object = vm.runtime.ext_jg3d.scene.getObjectByName(
                 String(args.object)
             );
-            if (_object) {
-                var object = _object.clone();
-                vm.runtime.ext_jg3d.scene.remove(_object);
+            if (object) {
+                //var object = _object.clone();
+                //vm.runtime.ext_jg3d.scene.remove(_object);
                 //var material = object.material;
-                if (!0) {
+                if (opacity != 100) {
                     object.material.transparent = true;
                     object.material.opacity = opacity / 100;
                     object.material.format = 1023;
@@ -233,7 +233,7 @@
                 object.traverse((child) => {
                     child.material = object.material;
                 });
-                vm.runtime.ext_jg3d.scene.add(object);
+                //vm.runtime.ext_jg3d.scene.add(object);
             } else return;
         }
         getopacity(args, util) {
