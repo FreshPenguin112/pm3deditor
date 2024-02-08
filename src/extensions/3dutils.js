@@ -10,6 +10,8 @@
     }
 
     vm.runtime.extensionRuntimeOptions.javascriptUnsandboxed = true;
+    //var p = {};
+    //document.addEventListener("mousemove", c=>{p=c});
     var MeshLoaders = {
         OBJ: new vm.runtime.ext_jg3d.OBJLoader(),
         GLTF: new vm.runtime.ext_jg3d.GLTFLoader(),
